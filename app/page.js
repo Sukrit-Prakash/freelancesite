@@ -39,9 +39,9 @@ const techStack = [
 ];
 
 const stats = [
-  { value: "50+", label: "Apps Delivered" },
-  { value: "30+", label: "Happy Clients" },
-  { value: "6+", label: "Years Experience" },
+  { value: "20+", label: "Apps Delivered" },
+  // { value: "30+", label: "Happy Clients" },
+  { value: "2+", label: "Years Experience" },
   { value: "99%", label: "Client Satisfaction" },
 ];
 

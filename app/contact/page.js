@@ -6,6 +6,7 @@ import {
     FaLinkedin,
     FaTwitter,
     FaEnvelope,
+    FaPhone,
     FaCalendarAlt,
     FaCheckCircle,
     FaPaperPlane,
@@ -24,22 +25,29 @@ const socials = [
         icon: FaLinkedin,
         label: "LinkedIn",
         handle: "in/bloomscripttechnologies",
-        href: "https://linkedin.com",
+        href: "https://www.linkedin.com/company/bloomscript-tech",
         color: "hover:border-blue-500/50 hover:text-blue-400",
     },
     {
         icon: FaTwitter,
         label: "Twitter / X",
         handle: "@bloomscripttechnologies",
-        href: "https://twitter.com",
+        href: "https://x.com/bloom_script",
         color: "hover:border-sky-500/50 hover:text-sky-400",
     },
     {
         icon: FaEnvelope,
         label: "Email",
-        handle: "info@bloomscripttechnologies.com",
-        href: "mailto:info@bloomscripttechnologies.com",
+        handle: "bloom.script.tech@gmail.com",
+        href: "mailto:bloom.script.tech@gmail.com",
         color: "hover:border-violet-500/50 hover:text-violet-400",
+    },
+    {
+        icon: FaPhone,
+        label: "Phone / WhatsApp",
+        handle: "+91 80767 60632",
+        href: "tel:+918076760632",
+        color: "hover:border-green-500/50 hover:text-green-400",
     },
 ];
 
@@ -47,6 +55,7 @@ export default function ContactPage() {
     const [form, setForm] = useState({ name: "", email: "", budget: "", message: "" });
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
     const handleChange = (e) =>
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -54,10 +63,27 @@ export default function ContactPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        // Simulate async submission
-        await new Promise((r) => setTimeout(r, 1500));
-        setLoading(false);
-        setSubmitted(true);
+        setError("");
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.error || "Something went wrong. Please try again.");
+            }
+
+            setSubmitted(true);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -148,10 +174,9 @@ export default function ContactPage() {
                                             className="w-full bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-slate-300 text-sm focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/30 transition-colors appearance-none"
                                         >
                                             <option value="">Select a range…</option>
-                                            <option value="<5k">Under $5,000</option>
-                                            <option value="5k-15k">$5,000 – $15,000</option>
-                                            <option value="15k-50k">$15,000 – $50,000</option>
-                                            <option value="50k+">$50,000+</option>
+                                            <option value="<10k">Under $120</option>
+                                            <option value="30k-45k">$350 – $500</option>
+                                            <option value=" Greater than 50k">greater than 50000 Rs.</option>
                                             <option value="discuss">Prefer to discuss</option>
                                         </select>
                                     </div>
@@ -171,6 +196,12 @@ export default function ContactPage() {
                                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/30 transition-colors resize-none"
                                         />
                                     </div>
+
+                                    {error && (
+                                        <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                                            <span>⚠</span> {error}
+                                        </div>
+                                    )}
 
                                     <button
                                         type="submit"
@@ -213,7 +244,8 @@ export default function ContactPage() {
                                 Prefer to talk? Book a free 30-minute discovery call and let's discuss your project live.
                             </p>
                             <a
-                                href="https://calendly.com"
+                                // href="https://calendly.com"
+                                href="https://calendly.com/bloom-script-tech"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-semibold text-sm shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105 transition-all duration-200"

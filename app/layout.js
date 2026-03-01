@@ -28,7 +28,8 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bloomscripttechnologies.com",
+    // url: "https://bloomscripttechnologies.com",
+    url:"https://freelancesite-beta.vercel.app/",
     siteName: "BloomScript Technologies",
     title: "BloomScript Technologies – Freelance React Native & Flutter Development Agency",
     description:

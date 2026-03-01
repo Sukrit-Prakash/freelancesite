@@ -159,7 +159,7 @@ export default function AboutPage() {
                                         </p>
                                         <div className="grid grid-cols-2 gap-4">
                                             {[
-                                                { n: "50+", l: "Apps Shipped" },
+                                                { n: "20+", l: "Apps Shipped" },
                                                 // { n: "30+", l: "Happy Clients" },
                                                 { n: "2+", l: "Years Exp." },
                                                 { n: "99%", l: "Satisfaction" },

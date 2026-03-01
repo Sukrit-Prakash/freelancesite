@@ -123,7 +123,7 @@ export default function ServicesPage() {
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5">
                         Expert Mobile{" "}
                         <span className="gradient-text">Development Services</span>
-                    </h1>
+                    </h1> 
                     <p className="text-slate-400 text-lg max-w-2xl mx-auto">
                         End-to-end mobile app development — from ideation to App Store launch.
                         We specialize in React Native, Flutter, and full-stack solutions.

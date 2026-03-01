@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -36,22 +37,27 @@ export default function Navbar() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                        ? "glass border-b border-white/10 shadow-lg shadow-black/20"
-                        : "bg-transparent"
+                    ? "glass border-b border-white/10 shadow-lg shadow-black/20"
+                    : "bg-transparent"
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 md:h-20">
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-2 group">
-                            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center shadow-lg shadow-violet-500/30 group-hover:shadow-violet-500/50 transition-shadow">
-                                <span className="text-white font-bold text-sm">BS</span>
-                            </div>
+                            <Image
+                                src="/logo.png"
+                                alt="BloomScript Logo"
+                                width={40}
+                                height={40}
+                                className="rounded-xl object-contain group-hover:opacity-90 transition-opacity"
+                                priority
+                            />
                             <span className="font-bold text-lg text-white">
                                 Bloom<span className="gradient-text">Script</span>
                             </span>
                         </Link>
-                    
+
                         {/* Desktop Nav */}
                         <nav className="hidden md:flex items-center gap-1">
                             {navLinks.map((link) => (
@@ -59,8 +65,8 @@ export default function Navbar() {
                                     key={link.href}
                                     href={link.href}
                                     className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-colors ${pathname === link.href
-                                            ? "text-white"
-                                            : "text-slate-400 hover:text-white"
+                                        ? "text-white"
+                                        : "text-slate-400 hover:text-white"
                                         }`}
                                 >
                                     {pathname === link.href && (
@@ -81,7 +87,7 @@ export default function Navbar() {
                                 href="/contact"
                                 className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white text-sm font-semibold shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105 transition-all duration-200"
                             >
-                                Contact Us  
+                                Contact Us
                             </Link>
                             <button
                                 onClick={() => setMenuOpen(!menuOpen)}
@@ -120,8 +126,8 @@ export default function Navbar() {
                                     <Link
                                         href={link.href}
                                         className={`flex items-center px-4 py-3 rounded-xl text-base font-medium transition-colors ${pathname === link.href
-                                                ? "bg-violet-600/20 text-violet-400 border border-violet-500/30"
-                                                : "text-slate-300 hover:text-white hover:bg-white/8"
+                                            ? "bg-violet-600/20 text-violet-400 border border-violet-500/30"
+                                            : "text-slate-300 hover:text-white hover:bg-white/8"
                                             }`}
                                     >
                                         {link.label}
@@ -133,7 +139,7 @@ export default function Navbar() {
                                     href="/contact"
                                     className="flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-semibold shadow-lg shadow-violet-500/25"
                                 >
-                                    Contact Us  
+                                    Contact Us
                                 </Link>
                             </div>
                         </div>

@@ -68,7 +68,7 @@ export const services = [
 export const pricingPlans = [
     {
         name: "Basic",
-        price: "$1,500",
+        price: "$100-150$",
         period: "/ project",
         description: "Perfect for startups needing a solid MVP to validate their idea.",
         features: [
@@ -84,7 +84,7 @@ export const pricingPlans = [
     },
     {
         name: "Pro",
-        price: "$4,500",
+        price: "$200-$500",
         period: "/ project",
         description: "The most popular option for businesses ready to launch a full product.",
         features: [

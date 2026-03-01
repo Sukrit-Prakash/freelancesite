@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 
 const footerLinks = {
@@ -18,10 +19,10 @@ const footerLinks = {
 };
 
 const socials = [
-    { icon: FaGithub, href: "https://github.com", label: "GitHub" },
-    { icon: FaLinkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: FaTwitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: FaEnvelope, href: "mailto:info@bloomscripttechnologies.com", label: "Email" },
+    // { icon: FaGithub, href: "https://github.com", label: "GitHub" },
+    { icon: FaLinkedin, href: "https://www.linkedin.com/company/bloomscript-tech", label: "LinkedIn" },
+    { icon: FaTwitter, href: "https://x.com/bloom_script", label: "Twitter" },
+    { icon: FaEnvelope, href: "mailto:bloom.script.tech@gmail.com", label: "Email" },
 ];
 
 export default function Footer() {
@@ -32,16 +33,20 @@ export default function Footer() {
                     {/* Brand */}
                     <div className="md:col-span-2">
                         <Link href="/" className="flex items-center gap-2 mb-4">
-                            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center">
-                                <span className="text-white font-bold text-sm">BS</span>
-                            </div>
+                            <Image
+                                src="/logo.png"
+                                alt="BloomScript Logo"
+                                width={36}
+                                height={36}
+                                className="rounded-xl object-contain"
+                            />
                             <span className="font-bold text-lg text-white">
                                 Bloom<span className="gradient-text">Script</span>
                             </span>
                         </Link>
                         <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
                             BloomScript Technologies is a leading mobile app development company specializing in React Native & Flutter.
-                            Building high-performance apps for iOS & Android since 2018.
+                            Building high-performance apps for iOS & Android since 2024.
                         </p>
                         <div className="flex gap-3 mt-6">
                             {socials.map(({ icon: Icon, href, label }) => (
@@ -81,7 +86,7 @@ export default function Footer() {
 
                 <div className="border-t border-white/8 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-slate-500 text-sm">
-                        © {new Date().getFullYear()} AlexDev. All rights reserved.
+                        © {new Date().getFullYear()} BloomScript. All rights reserved.
                     </p>
                     <p className="text-slate-500 text-sm">
                         Built with{" "}
