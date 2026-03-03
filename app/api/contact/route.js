@@ -13,10 +13,19 @@ export async function POST(request) {
         }
 
         const transporter = nodemailer.createTransport({
-            service: "gmail",
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // STARTTLS
+            family: 4,     // Force IPv4
+            tls: {
+                rejectUnauthorized: false, // bypass self-signed cert from local proxy/antivirus
+            },
             auth: {
+                type: "OAuth2",
                 user: process.env.GMAIL_USER,
-                pass: process.env.GMAIL_APP_PASSWORD,
+                clientId: process.env.CLIENT_ID,
+                clientSecret: process.env.CLIENT_SECRET,
+                refreshToken: process.env.REFRESH_TOKEN,
             },
         });
 
