@@ -1,11 +1,12 @@
 import React from 'react';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
     title: 'Privacy Policy',
     description: 'Official privacy policy for the 3Monkey mobile application by Bloom Script Tech.',
 };
 
-export default function PrivacyPolicy() {
+export default function PrivacyPolicy(): React.ReactElement {
     const lastUpdated = "March 03, 2026";
 
     return (
@@ -128,7 +129,7 @@ export default function PrivacyPolicy() {
                             href="mailto:bloom.script.tech@gmail.com"
                             className="font-mono text-violet-400 hover:text-violet-300 transition-colors"
                         >
-                              bloom.script.tech@gmail.com
+                            bloom.script.tech@gmail.com
                         </a>
                     </div>
 
