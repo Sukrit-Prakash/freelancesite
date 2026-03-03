@@ -1,12 +1,11 @@
 import React from 'react';
-import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
+export const metadata = {
     title: 'Privacy Policy',
     description: 'Official privacy policy for the 3Monkey mobile application by Bloom Script Tech.',
 };
 
-export default function PrivacyPolicy(): React.ReactElement {
+export default function PrivacyPolicy() {
     const lastUpdated = "March 03, 2026";
 
     return (
