@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaArrowRight } from "react-icons/fa";
 
 export default function ProjectCard({ project, index = 0 }) {
     const colors = [
@@ -64,16 +63,7 @@ export default function ProjectCard({ project, index = 0 }) {
                     )}
                 </div>
 
-                <Link
-                    href={`/portfolio/${project.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-violet-400 hover:text-violet-300 transition-colors group/link"
-                >
-                    View Details
-                    <FaArrowRight
-                        size={12}
-                        className="group-hover/link:translate-x-1 transition-transform"
-                    />
-                </Link>
+
             </div>
         </motion.div>
     );
