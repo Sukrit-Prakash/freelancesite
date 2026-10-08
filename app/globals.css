@@ -1,7 +1,54 @@
 @import "tailwindcss";
 
+/* ─── Brand tokens (from the BloomScript logo) ──────────────────────
+   brand  = the amber bulb
+   accent = deeper orange, used as the end of the brand gradient
+   ink    = the logo's navy, darkened for page backgrounds
+   Use as Tailwind classes: bg-brand-400, text-accent-500, bg-ink-950 … */
+@theme {
+  --color-brand-50: #fff8eb;
+  --color-brand-100: #feedc6;
+  --color-brand-200: #fdd889;
+  --color-brand-300: #fcbf4c;
+  --color-brand-400: #fbaa24;
+  --color-brand-500: #f58b0b;
+  --color-brand-600: #d96b06;
+  --color-brand-700: #b44c09;
+  --color-brand-800: #923b0e;
+  --color-brand-900: #78310f;
+  --color-brand-950: #451704;
+
+  --color-accent-300: #fdb08f;
+  --color-accent-400: #fb8655;
+  --color-accent-500: #f86a2e;
+  --color-accent-600: #e94e18;
+  --color-accent-700: #c13a12;
+
+  --color-ink-600: #3a3359;
+  --color-ink-700: #2b2546;
+  --color-ink-800: #1d1932;
+  --color-ink-900: #141123;
+  --color-ink-950: #0b0914;
+
+  --color-cream: #fdf6e9;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
 :root {
-  --background: #020817;
+  --background: var(--color-ink-950);
   --foreground: #e2e8f0;
 }
 
@@ -22,17 +69,17 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: var(--color-ink-900);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #7c3aed, #3b82f6);
+  background: linear-gradient(to bottom, var(--color-brand-400), var(--color-accent-500));
   border-radius: 3px;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(124, 58, 237, 0.4);
-  color: #f1f5f9;
+  background: rgba(251, 170, 36, 0.35);
+  color: #fff;
 }
 
 /* Glassmorphism utility */
@@ -45,7 +92,7 @@ body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #a78bfa, #60a5fa);
+  background: linear-gradient(135deg, var(--color-brand-300), var(--color-accent-500));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -61,25 +108,46 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  background: linear-gradient(135deg, var(--color-brand-400), var(--color-accent-500));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
 
 /* Glow effect */
-.glow-purple {
-  box-shadow: 0 0 40px rgba(124, 58, 237, 0.3);
-}
-.glow-blue {
-  box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+.glow-brand {
+  box-shadow: 0 0 40px rgba(251, 170, 36, 0.25);
 }
 
 /* Mesh gradient background */
 .mesh-bg {
-  background-color: #020817;
+  background-color: var(--color-ink-950);
   background-image:
-    radial-gradient(at 20% 50%, rgba(124, 58, 237, 0.15) 0px, transparent 50%),
-    radial-gradient(at 80% 20%, rgba(59, 130, 246, 0.12) 0px, transparent 50%),
-    radial-gradient(at 50% 80%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
+    radial-gradient(at 15% 40%, rgba(251, 170, 36, 0.10) 0px, transparent 50%),
+    radial-gradient(at 85% 15%, rgba(248, 106, 46, 0.09) 0px, transparent 50%),
+    radial-gradient(at 50% 85%, rgba(91, 72, 160, 0.12) 0px, transparent 50%);
+}
+
+/* Graph-paper grid, echoing the logo's background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+
+/* Fade the edges of horizontally scrolling strips */
+.fade-x {
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float,
+  .animate-float-slow {
+    animation: none;
+  }
 }

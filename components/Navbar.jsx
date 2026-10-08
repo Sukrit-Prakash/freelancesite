@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -44,18 +44,8 @@ export default function Navbar() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 md:h-20">
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2 group">
-                            <Image
-                                src="/logo.png"
-                                alt="BloomScript Logo"
-                                width={40}
-                                height={40}
-                                className="rounded-xl object-contain group-hover:opacity-90 transition-opacity"
-                                priority
-                            />
-                            <span className="font-bold text-lg text-white">
-                                Bloom<span className="gradient-text">Script</span>
-                            </span>
+                        <Link href="/" className="group" aria-label="BloomScript home">
+                            <Logo size={40} />
                         </Link>
 
                         {/* Desktop Nav */}
@@ -85,7 +75,7 @@ export default function Navbar() {
                         <div className="flex items-center gap-3">
                             <Link
                                 href="/contact"
-                                className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white text-sm font-semibold shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105 transition-all duration-200"
+                                className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 text-sm font-semibold shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-105 transition-all duration-200"
                             >
                                 Contact Us
                             </Link>
@@ -126,7 +116,7 @@ export default function Navbar() {
                                     <Link
                                         href={link.href}
                                         className={`flex items-center px-4 py-3 rounded-xl text-base font-medium transition-colors ${pathname === link.href
-                                            ? "bg-violet-600/20 text-violet-400 border border-violet-500/30"
+                                            ? "bg-brand-600/20 text-brand-400 border border-brand-500/30"
                                             : "text-slate-300 hover:text-white hover:bg-white/8"
                                             }`}
                                     >
@@ -137,7 +127,7 @@ export default function Navbar() {
                             <div className="mt-4 pt-4 border-t border-white/10">
                                 <Link
                                     href="/contact"
-                                    className="flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-semibold shadow-lg shadow-violet-500/25"
+                                    className="flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 font-semibold shadow-lg shadow-brand-500/25"
                                 >
                                     Contact Us
                                 </Link>

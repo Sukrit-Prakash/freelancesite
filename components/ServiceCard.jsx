@@ -21,10 +21,10 @@ export default function ServiceCard({ service, index = 0 }) {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{ y: -5, transition: { duration: 0.2 } }}
-            className="glass rounded-2xl border border-white/10 p-6 hover:border-violet-500/40 group transition-all duration-300"
+            className="glass rounded-2xl border border-white/10 p-6 hover:border-brand-500/40 group transition-all duration-300"
         >
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600/20 to-blue-500/20 border border-violet-500/20 flex items-center justify-center mb-5 group-hover:border-violet-500/50 transition-colors">
-                <Icon size={22} className="text-violet-400" />
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-600/20 to-accent-500/20 border border-brand-500/20 flex items-center justify-center mb-5 group-hover:border-brand-500/50 transition-colors">
+                <Icon size={22} className="text-brand-400" />
             </div>
             <h3 className="text-white font-bold text-xl mb-3">{service.title}</h3>
             <p className="text-slate-400 text-sm leading-relaxed">{service.shortDesc}</p>

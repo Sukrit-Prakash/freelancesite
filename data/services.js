@@ -5,7 +5,7 @@ export const services = [
         title: "React Native Development",
         shortDesc: "Native-feel cross-platform apps for iOS and Android using a single codebase.",
         description:
-            "I build performant, scalable mobile applications using React Native that feel truly native on both iOS and Android. From complex animations to native module integrations, I deliver apps that users love.",
+            "We build performant, scalable mobile applications using React Native that feel truly native on both iOS and Android. From complex animations to native module integrations, we deliver apps that users love.",
         features: [
             "Single codebase for iOS & Android",
             "Custom native module integrations",
@@ -21,7 +21,7 @@ export const services = [
         title: "Flutter Development",
         shortDesc: "Beautiful, blazing-fast apps with Google's Flutter framework.",
         description:
-            "Flutter enables pixel-perfect UI across Android, iOS, and beyond. I leverage Flutter's rich widget library and Dart's strong typing to build stunning, high-performance apps with smooth 60/120 fps animations.",
+            "Flutter enables pixel-perfect UI across Android, iOS, and beyond. We leverage Flutter's rich widget library and Dart's strong typing to build stunning, high-performance apps with smooth 60/120 fps animations.",
         features: [
             "Custom UI with Material 3 & Cupertino",
             "Riverpod / BLoC state management",
@@ -37,7 +37,7 @@ export const services = [
         title: "Full Stack Mobile Solutions",
         shortDesc: "End-to-end app development including REST/GraphQL APIs and databases.",
         description:
-            "Beyond the mobile client, I build the full backend ecosystem: RESTful or GraphQL APIs, databases, authentication systems, and cloud infrastructure to support your app at scale.",
+            "Beyond the mobile client, we build the full backend ecosystem: RESTful or GraphQL APIs, databases, authentication systems, and cloud infrastructure to support your app at scale.",
         features: [
             "Node.js / Express / NestJS APIs",
             "MongoDB, PostgreSQL, Firebase",
@@ -53,7 +53,7 @@ export const services = [
         title: "App Store & Play Store Deployment",
         shortDesc: "Complete publishing process for App Store and Google Play, including ASO.",
         description:
-            "Getting your app live is more than hitting 'submit'. I handle the full deployment pipeline — code signing, app metadata, screenshots, ASO keywords, and handling reviewer feedback — so your app reaches users fast.",
+            "Getting your app live is more than hitting 'submit'. We handle the full deployment pipeline — code signing, app metadata, screenshots, ASO keywords, and handling reviewer feedback — so your app reaches users fast.",
         features: [
             "Apple App Store submission & review",
             "Google Play Store publishing",
@@ -68,7 +68,7 @@ export const services = [
 export const pricingPlans = [
     {
         name: "Basic",
-        price: "$100-150$",
+        price: "$100-$150",
         period: "/ project",
         description: "Perfect for startups needing a solid MVP to validate their idea.",
         features: [
@@ -115,7 +115,7 @@ export const pricingPlans = [
             "6 months post-launch support",
             "SLA & priority support",
         ],
-        cta: "Contact Me",
+        cta: "Contact Us",
         highlighted: false,
     },
 ];
@@ -124,12 +124,12 @@ export const faqs = [
     {
         question: "How long does it take to build a mobile app?",
         answer:
-            "A basic MVP typically takes 4–6 weeks. A full-featured app with backend integration usually takes 8–16 weeks depending on complexity. I'll give you a precise estimate after our discovery call.",
+            "A basic MVP typically takes 4–6 weeks. A full-featured app with backend integration usually takes 8–16 weeks depending on complexity. We'll give you a precise estimate after our discovery call.",
     },
     {
         question: "Do you build for both iOS and Android?",
         answer:
-            "Yes! I specialize in cross-platform development with React Native and Flutter, which means you get a single codebase that runs natively on both iOS and Android — saving time and budget.",
+            "Yes! We specialize in cross-platform development with React Native and Flutter, which means you get a single codebase that runs natively on both iOS and Android — saving time and budget.",
     },
     {
         question: "Will I own the source code?",
@@ -139,7 +139,7 @@ export const faqs = [
     {
         question: "Do you integrate backend/APIs?",
         answer:
-            "Yes. I provide full-stack solutions including REST/GraphQL APIs, databases (MongoDB, PostgreSQL, Firebase), authentication, and cloud deployment on AWS or GCP.",
+            "Yes. We provide full-stack solutions including REST/GraphQL APIs, databases (MongoDB, PostgreSQL, Firebase), authentication, and cloud deployment on AWS or GCP.",
     },
     {
         question: "What's your revision policy?",
@@ -149,6 +149,6 @@ export const faqs = [
     {
         question: "How do we communicate during the project?",
         answer:
-            "I provide weekly progress updates via a shared project board (Notion/GitHub). We'll have bi-weekly video calls, and you can reach me anytime via Slack or email.",
+            "We provide weekly progress updates via a shared project board (Notion/GitHub). We'll have bi-weekly video calls, and you can reach us anytime via Slack or email.",
     },
 ];

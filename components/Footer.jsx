@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import Logo from "@/components/Logo";
+import { FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 
 const footerLinks = {
     Pages: [
@@ -27,22 +27,13 @@ const socials = [
 
 export default function Footer() {
     return (
-        <footer className="border-t border-white/8 bg-[#020817]">
+        <footer className="border-t border-white/8 bg-ink-950">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
                     {/* Brand */}
                     <div className="md:col-span-2">
-                        <Link href="/" className="flex items-center gap-2 mb-4">
-                            <Image
-                                src="/logo.png"
-                                alt="BloomScript Logo"
-                                width={36}
-                                height={36}
-                                className="rounded-xl object-contain"
-                            />
-                            <span className="font-bold text-lg text-white">
-                                Bloom<span className="gradient-text">Script</span>
-                            </span>
+                        <Link href="/" className="group inline-flex mb-4" aria-label="BloomScript home">
+                            <Logo size={36} />
                         </Link>
                         <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
                             BloomScript Technologies is a leading mobile app development company specializing in React Native & Flutter.
@@ -56,7 +47,7 @@ export default function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={label}
-                                    className="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-slate-400 hover:text-violet-400 hover:border-violet-500/40 transition-all hover:scale-110"
+                                    className="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-slate-400 hover:text-brand-400 hover:border-brand-500/40 transition-all hover:scale-110"
                                 >
                                     <Icon size={17} />
                                 </a>
@@ -73,7 +64,7 @@ export default function Footer() {
                                     <li key={link.label}>
                                         <Link
                                             href={link.href}
-                                            className="text-slate-400 hover:text-violet-400 text-sm transition-colors"
+                                            className="text-slate-400 hover:text-brand-400 text-sm transition-colors"
                                         >
                                             {link.label}
                                         </Link>

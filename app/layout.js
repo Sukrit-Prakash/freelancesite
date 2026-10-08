@@ -15,7 +15,7 @@ export const metadata = {
     template: "%s | BloomScript Technologies",
   },
   description:
-    "Expert freelance mobile app developer specializing in React Native and Flutter. I build high-performance, scalable apps for iOS and Android. Let's bring your idea to life.",
+    "A mobile app development agency specializing in React Native and Flutter. We build high-performance, scalable apps for iOS and Android. Let's bring your idea to life.",
   keywords: [
     "React Native developer",
     "Flutter developer",
@@ -45,7 +45,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} font-sans antialiased bg-[#020817] text-slate-100`}>
+      <body className={`${inter.variable} font-sans antialiased bg-ink-950 text-slate-100`}>
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

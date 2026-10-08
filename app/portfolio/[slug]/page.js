@@ -1,15 +1,17 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projects } from "@/data/projects";
-import { FaArrowLeft, FaCheckCircle, FaGooglePlay, FaAppStore } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaCheckCircle, FaGooglePlay, FaAppStore } from "react-icons/fa";
 import AnimatedSection from "@/components/AnimatedSection";
+import PhoneMockup from "@/components/PhoneMockup";
 
 export async function generateStaticParams() {
     return projects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }) {
-    const project = projects.find((p) => p.slug === params.slug);
+    const { slug } = await params;
+    const project = projects.find((p) => p.slug === slug);
     if (!project) return {};
     return {
         title: project.title,
@@ -17,71 +19,91 @@ export async function generateMetadata({ params }) {
     };
 }
 
-const gradients = [
-    "from-violet-600/30 to-blue-600/30",
-    "from-blue-600/30 to-cyan-500/30",
-    "from-fuchsia-600/30 to-violet-600/30",
-    "from-cyan-500/30 to-teal-500/30",
-    "from-emerald-500/30 to-blue-500/30",
-    "from-orange-500/30 to-rose-500/30",
-];
-
-export default function ProjectDetailPage({ params }) {
-    const idx = projects.findIndex((p) => p.slug === params.slug);
-    const project = projects[idx];
+export default async function ProjectDetailPage({ params }) {
+    const { slug } = await params;
+    const project = projects.find((p) => p.slug === slug);
 
     if (!project) notFound();
 
-    const gradient = gradients[idx % gradients.length];
+    const [cover, second] = project.screens;
+    const storeLinks = [
+        project.playStore && { href: project.playStore, label: "Get it on Google Play", icon: FaGooglePlay, iconClass: "text-emerald-400" },
+        project.appStore && { href: project.appStore, label: "Download on App Store", icon: FaAppStore, iconClass: "text-sky-400" },
+    ].filter(Boolean);
 
     return (
         <div className="mesh-bg pt-20 min-h-screen">
             {/* Hero banner */}
-            <div className={`relative bg-gradient-to-br ${gradient} py-24 border-b border-white/8`}>
-                <div className="absolute inset-0 bg-[#020817]/60" />
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <section className="relative overflow-hidden border-b border-white/8">
+                <div
+                    className="absolute inset-0 opacity-30"
+                    style={{ background: `radial-gradient(circle at 75% 60%, ${project.color}, transparent 55%)` }}
+                />
+                <div className="absolute inset-0 grid-bg" />
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16 lg:py-20">
                     <AnimatedSection>
                         <Link
                             href="/portfolio"
-                            className="inline-flex items-center gap-2 text-slate-400 hover:text-violet-400 transition-colors text-sm mb-8"
+                            className="inline-flex items-center gap-2 text-slate-400 hover:text-brand-400 transition-colors text-sm mb-8"
                         >
                             <FaArrowLeft size={12} /> Back to Portfolio
                         </Link>
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="px-3 py-1 rounded-full bg-violet-500/20 border border-violet-500/30 text-violet-400 text-xs font-semibold">
+                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                            <span className="px-3 py-1 rounded-full bg-brand-500/15 border border-brand-500/30 text-brand-300 text-xs font-semibold">
                                 {project.category}
                             </span>
+                            {storeLinks.length > 0 && (
+                                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 text-xs font-semibold">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                    Live in store
+                                </span>
+                            )}
                         </div>
-                        <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+                        <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
                             {project.title}
                         </h1>
-                        <p className="text-slate-300 text-lg max-w-2xl">{project.shortDesc}</p>
+                        <p className="text-slate-300 text-lg max-w-xl">{project.shortDesc}</p>
 
-                        {/* Store links */}
-                        <div className="flex gap-3 mt-8">
-                            {project.appStore && (
-                                <a
-                                    href={project.appStore}
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass border border-white/15 text-white text-sm font-medium hover:border-violet-500/40 transition-all"
-                                >
-                                    <FaAppStore className="text-blue-400" /> App Store
-                                </a>
-                            )}
-                            {project.playStore && (
-                                <a
-                                    href={project.playStore}
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass border border-white/15 text-white text-sm font-medium hover:border-violet-500/40 transition-all"
-                                >
-                                    <FaGooglePlay className="text-green-400" /> Play Store
-                                </a>
-                            )}
-                        </div>
+                        {storeLinks.length > 0 && (
+                            <div className="flex flex-wrap gap-3 mt-8">
+                                {storeLinks.map(({ href, label, icon: Icon, iconClass }) => (
+                                    <a
+                                        key={href}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass border border-white/15 text-white text-sm font-semibold hover:border-brand-500/50 transition-all"
+                                    >
+                                        <Icon className={iconClass} /> {label}
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+                    </AnimatedSection>
+
+                    {/* Phones */}
+                    <AnimatedSection delay={0.15} className="relative h-[420px] sm:h-[520px]">
+                        {second && (
+                            <PhoneMockup
+                                src={second}
+                                alt={`${project.title} second screen`}
+                                sizes="240px"
+                                className="absolute left-1/2 top-10 w-40 sm:w-56 translate-x-[5%] rotate-6 opacity-90"
+                            />
+                        )}
+                        <PhoneMockup
+                            src={cover}
+                            alt={`${project.title} main screen`}
+                            sizes="260px"
+                            priority
+                            className="absolute left-1/2 top-0 w-44 sm:w-60 -translate-x-[95%] -rotate-3 animate-float-slow"
+                        />
                     </AnimatedSection>
                 </div>
-            </div>
+            </section>
 
             {/* Content */}
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                     {/* Main content */}
                     <div className="lg:col-span-2 space-y-10">
@@ -94,10 +116,10 @@ export default function ProjectDetailPage({ params }) {
 
                         <AnimatedSection delay={0.1}>
                             <h2 className="text-2xl font-bold text-white mb-5">Key Features</h2>
-                            <ul className="space-y-3">
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 {project.features.map((f) => (
-                                    <li key={f} className="flex items-start gap-3 text-slate-300">
-                                        <FaCheckCircle className="text-violet-400 flex-shrink-0 mt-0.5" size={15} />
+                                    <li key={f} className="flex items-start gap-3 text-slate-300 glass rounded-xl border border-white/8 p-4 text-sm">
+                                        <FaCheckCircle className="text-brand-400 flex-shrink-0 mt-0.5" size={15} />
                                         <span>{f}</span>
                                     </li>
                                 ))}
@@ -116,7 +138,7 @@ export default function ProjectDetailPage({ params }) {
                                     {project.tech.map((t) => (
                                         <span
                                             key={t}
-                                            className="text-xs px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 font-medium"
+                                            className="text-xs px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-200 font-medium"
                                         >
                                             {t}
                                         </span>
@@ -130,7 +152,7 @@ export default function ProjectDetailPage({ params }) {
                                 </p>
                                 <Link
                                     href="/contact"
-                                    className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-semibold text-sm shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105 transition-all duration-200"
+                                    className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 font-semibold text-sm shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-105 transition-all duration-200"
                                 >
                                     Discuss Your Project
                                 </Link>
@@ -139,10 +161,32 @@ export default function ProjectDetailPage({ params }) {
                     </AnimatedSection>
                 </div>
 
+                {/* Screens gallery */}
+                <AnimatedSection delay={0.1} className="mt-20">
+                    <h2 className="text-2xl font-bold text-white mb-8">Screens</h2>
+                    <div className="relative rounded-3xl border border-white/8 bg-ink-900/60 overflow-hidden px-6 py-12">
+                        <div
+                            className="absolute inset-0 opacity-20"
+                            style={{ background: `radial-gradient(circle at 50% 100%, ${project.color}, transparent 60%)` }}
+                        />
+                        <div className="relative flex flex-wrap justify-center gap-8 sm:gap-12">
+                            {project.screens.map((src, i) => (
+                                <PhoneMockup
+                                    key={src}
+                                    src={src}
+                                    alt={`${project.title} screen ${i + 1}`}
+                                    sizes="260px"
+                                    className="w-52 sm:w-60"
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </AnimatedSection>
+
                 {/* Other projects */}
                 <AnimatedSection delay={0.2} className="mt-20 pt-12 border-t border-white/8">
                     <h2 className="text-2xl font-bold text-white mb-2">More Projects</h2>
-                    <p className="text-slate-400 mb-8 text-sm">Explore other work from BloomScript Technologies portfolio.</p>
+                    <p className="text-slate-400 mb-8 text-sm">Explore other work from the BloomScript Technologies portfolio.</p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {projects
                             .filter((p) => p.slug !== project.slug)
@@ -151,12 +195,19 @@ export default function ProjectDetailPage({ params }) {
                                 <Link
                                     key={related.slug}
                                     href={`/portfolio/${related.slug}`}
-                                    className="glass rounded-xl border border-white/10 p-4 hover:border-violet-500/40 transition-all group"
+                                    className="glass rounded-xl border border-white/10 p-4 hover:border-brand-500/40 transition-all group flex items-center gap-4"
                                 >
-                                    <span className="text-xs text-violet-400 font-medium">{related.category}</span>
-                                    <h4 className="text-white font-semibold text-sm mt-1 group-hover:gradient-text transition-all">
-                                        {related.title}
-                                    </h4>
+                                    <div className="relative w-12 h-16 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-white/10">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src={related.screens[0]} alt="" className="w-full h-full object-cover object-top" />
+                                    </div>
+                                    <div className="min-w-0">
+                                        <span className="text-xs text-brand-400 font-medium">{related.category}</span>
+                                        <h4 className="text-white font-semibold text-sm mt-1 group-hover:text-brand-300 transition-colors">
+                                            {related.title}
+                                        </h4>
+                                    </div>
+                                    <FaArrowRight size={11} className="ml-auto text-slate-500 group-hover:text-brand-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
                                 </Link>
                             ))}
                     </div>

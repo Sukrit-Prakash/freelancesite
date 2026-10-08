@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 
 const avatarColors = [
-    "from-violet-500 to-blue-500",
-    "from-blue-500 to-cyan-400",
-    "from-fuchsia-500 to-violet-500",
-    "from-emerald-500 to-blue-500",
+    "from-brand-300 to-brand-500",
+    "from-accent-400 to-accent-600",
+    "from-brand-400 to-accent-500",
+    "from-cream to-brand-200",
 ];
 
 export default function TestimonialCard({ testimonial, index = 0 }) {
@@ -34,7 +34,7 @@ export default function TestimonialCard({ testimonial, index = 0 }) {
             <div className="flex items-center gap-3 pt-2 border-t border-white/8">
                 <div
                     className={`w-10 h-10 rounded-full bg-gradient-to-br ${avatarColors[index % avatarColors.length]
-                        } flex items-center justify-center text-white font-bold text-sm shadow-lg`}
+                        } flex items-center justify-center text-ink-950 font-bold text-sm shadow-lg`}
                 >
                     {testimonial.avatar}
                 </div>

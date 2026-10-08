@@ -11,7 +11,7 @@ export default function SectionHeading({ label, title, subtitle, centered = true
             className={`mb-14 ${centered ? "text-center" : ""}`}
         >
             {label && (
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-400 text-xs font-semibold uppercase tracking-widest mb-4">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-widest mb-4">
                     {label}
                 </span>
             )}

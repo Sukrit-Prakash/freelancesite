@@ -40,7 +40,7 @@ const socials = [
         label: "Email",
         handle: "bloom.script.tech@gmail.com",
         href: "mailto:bloom.script.tech@gmail.com",
-        color: "hover:border-violet-500/50 hover:text-violet-400",
+        color: "hover:border-brand-500/50 hover:text-brand-400",
     },
     {
         icon: FaPhone,
@@ -91,7 +91,7 @@ export default function ContactPage() {
             {/* Hero */}
             <section className="py-24 px-4 sm:px-6 lg:px-8 text-center">
                 <AnimatedSection>
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-400 text-xs font-semibold uppercase tracking-widest mb-6">
+                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-widest mb-6">
                         Contact
                     </span>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5">
@@ -100,7 +100,7 @@ export default function ContactPage() {
                     </h1>
                     <p className="text-slate-400 text-lg max-w-2xl mx-auto">
                         Have a project in mind? We'd love to hear about it. Fill out the form below or reach
-                        out via any of the channels — We typically respond within 24 hours.
+                        out via any of the channels — we typically respond within 24 hours.
                     </p>
                 </AnimatedSection>
             </section>
@@ -117,8 +117,8 @@ export default function ContactPage() {
                                     animate={{ opacity: 1, scale: 1 }}
                                     className="flex flex-col items-center justify-center py-16 text-center gap-4"
                                 >
-                                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center shadow-xl shadow-violet-500/30 mb-2">
-                                        <FaCheckCircle size={32} className="text-white" />
+                                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-brand-400 to-accent-500 flex items-center justify-center shadow-xl shadow-brand-500/30 mb-2">
+                                        <FaCheckCircle size={32} className="text-ink-950" />
                                     </div>
                                     <h2 className="text-2xl font-bold text-white">Message Sent!</h2>
                                     <p className="text-slate-400 max-w-xs">
@@ -142,7 +142,7 @@ export default function ContactPage() {
                                                 value={form.name}
                                                 onChange={handleChange}
                                                 placeholder="John Smith"
-                                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/30 transition-colors"
+                                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30 transition-colors"
                                             />
                                         </div>
                                         <div>
@@ -157,7 +157,7 @@ export default function ContactPage() {
                                                 value={form.email}
                                                 onChange={handleChange}
                                                 placeholder="john@company.com"
-                                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/30 transition-colors"
+                                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30 transition-colors"
                                             />
                                         </div>
                                     </div>
@@ -171,7 +171,7 @@ export default function ContactPage() {
                                             name="budget"
                                             value={form.budget}
                                             onChange={handleChange}
-                                            className="w-full bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-slate-300 text-sm focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/30 transition-colors appearance-none"
+                                            className="w-full bg-ink-900 border border-white/10 rounded-xl px-4 py-3 text-slate-300 text-sm focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30 transition-colors appearance-none"
                                         >
                                             <option value="">Select a range…</option>
                                             <option value="<10k">Under $120</option>
@@ -192,8 +192,8 @@ export default function ContactPage() {
                                             rows={6}
                                             value={form.message}
                                             onChange={handleChange}
-                                            placeholder="Tell me about your project — what it does, who it's for, and what you'd like to build…"
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/30 transition-colors resize-none"
+                                            placeholder="Tell us about your project — what it does, who it's for, and what you'd like to build…"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30 transition-colors resize-none"
                                         />
                                     </div>
 
@@ -206,14 +206,14 @@ export default function ContactPage() {
                                     <button
                                         type="submit"
                                         disabled={loading}
-                                        className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-bold text-base shadow-2xl shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-[1.02] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
+                                        className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 font-bold text-base shadow-2xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:scale-[1.02] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
                                     >
                                         {loading ? (
                                             <>
                                                 <motion.span
                                                     animate={{ rotate: 360 }}
                                                     transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
-                                                    className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                                                    className="w-4 h-4 border-2 border-ink-950/30 border-t-ink-950 rounded-full"
                                                 />
                                                 Sending…
                                             </>
@@ -225,7 +225,7 @@ export default function ContactPage() {
                                     </button>
 
                                     <p className="text-slate-500 text-xs text-center">
-                                        I'll respond within 24 hours · No spam, ever.
+                                        We'll respond within 24 hours · No spam, ever.
                                     </p>
                                 </form>
                             )}
@@ -235,9 +235,9 @@ export default function ContactPage() {
                     {/* Sidebar */}
                     <AnimatedSection className="lg:col-span-2 space-y-6" delay={0.15}>
                         {/* Schedule a call CTA */}
-                        <div className="glass rounded-2xl border border-violet-500/20 p-6 bg-gradient-to-br from-violet-600/10 to-blue-600/10">
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center mb-4 shadow-lg shadow-violet-500/30">
-                                <FaCalendarAlt size={18} className="text-white" />
+                        <div className="glass rounded-2xl border border-brand-500/20 p-6 bg-gradient-to-br from-brand-600/10 to-accent-600/10">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-400 to-accent-500 flex items-center justify-center mb-4 shadow-lg shadow-brand-500/30">
+                                <FaCalendarAlt size={18} className="text-ink-950" />
                             </div>
                             <h3 className="text-white font-bold text-lg mb-2">Schedule a Free Call</h3>
                             <p className="text-slate-400 text-sm mb-5 leading-relaxed">
@@ -248,7 +248,7 @@ export default function ContactPage() {
                                 href="https://calendly.com/bloom-script-tech"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-semibold text-sm shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105 transition-all duration-200"
+                                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 font-semibold text-sm shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-105 transition-all duration-200"
                             >
                                 <FaCalendarAlt size={13} /> Book a Call
                             </a>
@@ -256,7 +256,7 @@ export default function ContactPage() {
 
                         {/* Social links */}
                         <div className="glass rounded-2xl border border-white/10 p-6">
-                            <h3 className="text-white font-bold text-base mb-4">Find Me Online</h3>
+                            <h3 className="text-white font-bold text-base mb-4">Find Us Online</h3>
                             <div className="space-y-3">
                                 {socials.map(({ icon: Icon, label, handle, href, color }) => (
                                     <a

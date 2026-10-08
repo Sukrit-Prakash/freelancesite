@@ -1,14 +1,7 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-    FaCheckCircle,
-    FaLightbulb,
-    FaPencilRuler,
-    FaCode,
-    FaRocket,
-    FaArrowRight,
-} from "react-icons/fa";
+import { FaCheckCircle, FaArrowRight } from "react-icons/fa";
 import {
     SiReact,
     SiFlutter,
@@ -23,6 +16,8 @@ import {
 } from "react-icons/si";
 import SectionHeading from "@/components/SectionHeading";
 import AnimatedSection from "@/components/AnimatedSection";
+import { LogoMark } from "@/components/Logo";
+import { processSteps } from "@/data/process";
 
 const skills = [
     { icon: SiReact, name: "React Native", level: 98, color: "from-cyan-500 to-cyan-400" },
@@ -37,37 +32,10 @@ const skills = [
     { icon: SiGit, name: "Git / CI/CD", level: 95, color: "from-rose-500 to-rose-400" },
 ];
 
-const process = [
-    {
-        step: "01",
-        icon: FaLightbulb,
-        title: "Discovery",
-        desc: "We start with a deep-dive conversation to understand your goals, target audience, and technical requirements. We produce a detailed project scope and timeline.",
-    },
-    {
-        step: "02",
-        icon: FaPencilRuler,
-        title: "Design",
-        desc: "We create wireframes and high-fidelity UI mockups for your review. We iterate until the design perfectly reflects your vision before a single line of code is written.",
-    },
-    {
-        step: "03",
-        icon: FaCode,
-        title: "Development",
-        desc: "Clean, well-tested code following SOLID principles. We deliver features in sprints with weekly demos so you always know exactly where the project stands.",
-    },
-    {
-        step: "04",
-        icon: FaRocket,
-        title: "Deployment",
-        desc: "Full app store submission, code signing, ASO optimization, and post-launch monitoring. We're with you every step of the way through launch and beyond.",
-    },
-];
-
 const whyChooseMe = [
     "2+ years of mobile-first development experience",
     "50+ apps shipped to App Store & Google Play",
-    "Single developer accountability — no handoff chaos",
+    "One dedicated team from start to finish — no handoff chaos",
     "Pixel-perfect UI with outstanding UX attention",
     "Full transparency: weekly updates & shared project board",
     "End-to-end ownership from backend to app store",
@@ -79,11 +47,11 @@ function SkillBar({ skill, index }) {
     const Icon = skill.icon;
     return (
         <AnimatedSection delay={index * 0.05}>
-            <div className="glass rounded-xl border border-white/10 p-4 hover:border-violet-500/30 transition-colors">
+            <div className="glass rounded-xl border border-white/10 p-4 hover:border-brand-500/30 transition-colors">
                 <div className="flex items-center gap-3 mb-3">
                     <Icon size={18} className="text-slate-300" />
                     <span className="text-slate-300 text-sm font-medium flex-1">{skill.name}</span>
-                    <span className="text-violet-400 text-sm font-bold">{skill.level}%</span>
+                    <span className="text-brand-400 text-sm font-bold">{skill.level}%</span>
                 </div>
                 <div className="w-full bg-white/5 rounded-full h-1.5">
                     <motion.div
@@ -108,7 +76,7 @@ export default function AboutPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         {/* Left: text */}
                         <AnimatedSection>
-                            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-400 text-xs font-semibold uppercase tracking-widest mb-6">
+                            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-widest mb-6">
                                 About Our Agency
                             </span>
                             <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">
@@ -131,13 +99,13 @@ export default function AboutPage() {
                             <div className="flex gap-4">
                                 <Link
                                     href="/contact"
-                                    className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-semibold text-sm shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105 transition-all duration-200"
+                                    className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 font-semibold text-sm shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-105 transition-all duration-200"
                                 >
                                     Start a Project <FaArrowRight size={12} />
                                 </Link>
                                 <Link
                                     href="/portfolio"
-                                    className="inline-flex items-center gap-2 px-7 py-3 rounded-xl glass border border-white/15 text-white font-semibold text-sm hover:border-violet-500/40 transition-all duration-200"
+                                    className="inline-flex items-center gap-2 px-7 py-3 rounded-xl glass border border-white/15 text-white font-semibold text-sm hover:border-brand-500/40 transition-all duration-200"
                                 >
                                    View Case Studies
                                 </Link>
@@ -148,16 +116,17 @@ export default function AboutPage() {
                         <AnimatedSection delay={0.15}>
                             <div className="relative">
                                 <div className="glass rounded-3xl border border-white/10 p-8 text-center overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-violet-600/8 to-blue-600/8" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-brand-600/8 to-accent-600/8" />
                                     <div className="relative z-10">
-                                        <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-violet-500/30">
-                                            <span className="text-white font-extrabold text-4xl">BST</span>
+                                        <div className="relative w-32 h-32 rounded-3xl bg-ink-900 border border-brand-500/30 flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-brand-500/20">
+                                            <div className="absolute inset-0 rounded-3xl grid-bg" />
+                                            <LogoMark size={88} className="relative" />
                                         </div>
                                         <h2 className="text-white font-bold text-xl mb-1">Bloom Script Technologies</h2>
-                                        <p className="text-violet-400 text-sm font-medium mb-5">
+                                        <p className="text-brand-400 text-sm font-medium mb-5">
                                             Mobile App Development Agency
                                         </p>
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-3 gap-3">
                                             {[
                                                 { n: "20+", l: "Apps Shipped" },
                                                 // { n: "30+", l: "Happy Clients" },
@@ -216,16 +185,16 @@ export default function AboutPage() {
                         subtitle="A proven 4-step process that delivers great results, on time and on budget."
                     />
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {process.map((step, i) => {
+                        {processSteps.map((step, i) => {
                             const Icon = step.icon;
                             return (
                                 <AnimatedSection key={step.step} delay={i * 0.1}>
-                                    <div className="glass rounded-2xl border border-white/10 p-6 hover:border-violet-500/40 group transition-all h-full">
+                                    <div className="glass rounded-2xl border border-white/10 p-6 hover:border-brand-500/40 group transition-all h-full">
                                         <div className="text-6xl font-extrabold text-white/5 mb-3 leading-none">
                                             {step.step}
                                         </div>
-                                        <div className="w-10 h-10 rounded-xl bg-violet-500/15 border border-violet-500/20 flex items-center justify-center mb-4">
-                                            <Icon className="text-violet-400" size={18} />
+                                        <div className="w-10 h-10 rounded-xl bg-brand-500/15 border border-brand-500/20 flex items-center justify-center mb-4">
+                                            <Icon className="text-brand-400" size={18} />
                                         </div>
                                         <h3 className="text-white font-bold text-lg mb-3">{step.title}</h3>
                                         <p className="text-slate-400 text-sm leading-relaxed">{step.desc}</p>
@@ -237,7 +206,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Why Choose Me */}
+            {/* Why Choose Us */}
             <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -249,7 +218,7 @@ export default function AboutPage() {
                                     <span className="gradient-text">Us</span>
                                 </>
                             }
-                            subtitle="Beyond technical skill, We bring reliability, communication, and a genuine investment in your project's success."
+                            subtitle="Beyond technical skill, we bring reliability, communication, and a genuine investment in your project's success."
                             centered={false}
                         />
                         <AnimatedSection delay={0.1}>
@@ -263,7 +232,7 @@ export default function AboutPage() {
                                         transition={{ delay: i * 0.07, duration: 0.4 }}
                                         className="flex items-center gap-3 glass rounded-xl border border-white/10 px-4 py-3"
                                     >
-                                        <FaCheckCircle className="text-violet-400 flex-shrink-0" size={13} />
+                                        <FaCheckCircle className="text-brand-400 flex-shrink-0" size={13} />
                                         <span className="text-slate-300 text-sm">{point}</span>
                                     </motion.div>
                                 ))}
@@ -284,7 +253,7 @@ export default function AboutPage() {
                     </p>
                     <Link
                         href="/contact"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-bold shadow-2xl shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105 transition-all duration-200"
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 font-bold shadow-2xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:scale-105 transition-all duration-200"
                     >
                         Let's Talk <FaArrowRight size={14} />
                     </Link>

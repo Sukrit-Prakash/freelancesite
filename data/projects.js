@@ -1,3 +1,7 @@
+// screens: phone screenshots shown on cards and detail pages (the first one is the cover).
+//   Swap the SVG mockups for real screenshots (PNG/JPG, portrait ~9:19.5) whenever you have them.
+// color: the app's own accent colour, used for the glow behind its phone mockups.
+// appStore / playStore: store URL, or null to hide the button.
 export const projects = [
   {
     id: 1,
@@ -8,9 +12,10 @@ export const projects = [
       "ShopEase is a cross-platform e-commerce app built with React Native. It features product listings, cart management, Stripe payment integration, real-time order tracking, and push notifications via Firebase. The backend is powered by Node.js and MongoDB.",
     tech: ["React Native", "Node.js", "MongoDB", "Stripe", "Firebase"],
     category: "React Native",
-    image: "/projects/shopease.png",
-    appStore: "#",
-    playStore: "#",
+    color: "#ff6b3d",
+    screens: ["/projects/shopease-1.svg", "/projects/shopease-2.svg"],
+    appStore: null,
+    playStore: null,
     features: [
       "Real-time product catalog with search & filters",
       "Stripe payment gateway integration",
@@ -27,8 +32,9 @@ export const projects = [
       "Blackbox is a high-security mobile vault built to give users total control over their digital identity. Unlike cloud-based managers, Blackbox follows a 'Zero-Knowledge' local-first architecture, meaning your master password and credentials never leave your device. The app utilizes SQLCipher and AES-256 bit encryption to ensure that even if the device is lost, the data remains inaccessible to unauthorized users.",
     tech: ["React Native", "SQLCipher", "AES-256", "Biometrics API", "Redux"],
      category: "React Native",
-    image: "/projects/blackbox.png",
-    appStore: "#",
+    color: "#34d399",
+    screens: ["/projects/blackbox-1.svg", "/projects/blackbox-2.svg"],
+    appStore: null,
     playStore: "https://play.google.com/store/apps/details?id=com.blackbox.securevault",
     features: [
       "AES-256 bit hardware-backed encryption",
@@ -47,9 +53,10 @@ export const projects = [
       "Rentify is a property rental platform with geo-based listing search powered by Google Maps. Landlords can post properties with detailed descriptions, photos, and pricing. Tenants can book viewings, chat in-app, and pay rent via the app. Built with React Native and a GraphQL backend.",
     tech: ["React Native", "GraphQL", "PostgreSQL", "Google Maps API", "AWS S3"],
     category: "React Native",
-    image: "/projects/rentify.png",
-    appStore: "#",
-    playStore: "#",
+    color: "#14b8a6",
+    screens: ["/projects/rentify-1.svg", "/projects/rentify-2.svg"],
+    appStore: null,
+    playStore: null,
     features: [
       "Google Maps-based property search with filters",
       "In-app chat between landlord and tenant",
@@ -66,9 +73,10 @@ export const projects = [
       "Imagene is a cutting-edge AI generation platform focused on making high-quality visual content accessible at affordable prices. Specializing in memes and random image synthesis, the application features a deeply customized user interface designed for a premium creative flow. Powered by custom Stable Diffusion models, it allows users to generate viral-ready memes or unique digital art in seconds.",
     tech: ["Flutter", "Stable Diffusion API", "Firebase", "Stripe"],
     category: "Flutter",
-    image: "/projects/imagene.png",
-    appStore: "#",
-    playStore: "#",
+    color: "#ec4899",
+    screens: ["/projects/imagene-1.svg", "/projects/imagene-2.svg"],
+    appStore: null,
+    playStore: null,
     features: [
       "Custom meme-generation engine with trending templates",
       "High-speed random image synthesis from natural language prompts",
@@ -85,8 +93,9 @@ export const projects = [
       "TripLog is a high-precision mapping application that secured a top prize at the Smart India Hackathon (SIH). Originally designed as a utility for government agencies, the app allows field workers to record their movement paths in real-time, providing transparency for official visits. It features intelligent path-snapping to roads, live distance calculation using the Haversine formula, and automated reporting for government audits.",
     tech: ["Flutter", "Google Maps API", "PostGIS", "Firebase", "Socket.io"],
      category: "Flutter",
-    image: "/projects/triplog.png",
-    appStore: "#",
+    color: "#3b82f6",
+    screens: ["/projects/triplog-1.svg", "/projects/triplog-2.svg"],
+    appStore: null,
     playStore: "https://play.google.com/store/apps/details?id=com.triplog.fieldofficer",
     features: [
       "Real-time GPS path tracing with Mapbox/Google Maps integration",
@@ -105,9 +114,10 @@ export const projects = [
       "EduFlow is a mobile learning management system built with Flutter. It supports video streaming, interactive quizzes, certificates, and real-time leaderboards. Instructors can create courses with a rich text editor. The backend uses Node.js, Express, and MongoDB with AWS CloudFront for video delivery.",
     tech: ["Flutter", "Node.js", "MongoDB", "AWS CloudFront", "Socket.io"],
     category: "Flutter",
-    image: "/projects/eduflow.png",
-    appStore: "#",
-    playStore: "#",
+    color: "#6366f1",
+    screens: ["/projects/eduflow-1.svg", "/projects/eduflow-2.svg"],
+    appStore: null,
+    playStore: null,
     features: [
       "HD video streaming with adaptive bitrate",
       "Gamified quizzes and real-time leaderboards",

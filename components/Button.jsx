@@ -19,11 +19,11 @@ export default function Button({
 
     const variants = {
         primary:
-            "bg-gradient-to-r from-violet-600 to-blue-500 text-white shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105",
+            "bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-105",
         secondary:
-            "glass border border-white/15 text-white hover:border-violet-500/50 hover:bg-white/8 hover:scale-105",
+            "glass border border-white/15 text-white hover:border-brand-500/50 hover:bg-white/8 hover:scale-105",
         outline:
-            "border border-violet-500 text-violet-400 hover:bg-violet-500/10 hover:scale-105",
+            "border border-brand-500 text-brand-400 hover:bg-brand-500/10 hover:scale-105",
     };
 
     return (

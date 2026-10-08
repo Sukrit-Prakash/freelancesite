@@ -22,7 +22,7 @@ function ServiceSection({ service, index }) {
             >
                 {/* Text */}
                 <AnimatedSection className="flex-1" delay={0}>
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-400 text-xs font-semibold uppercase tracking-widest mb-5">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-widest mb-5">
                         {Icon && <Icon size={14} />} {service.title}
                     </div>
                     <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
@@ -32,14 +32,14 @@ function ServiceSection({ service, index }) {
                     <ul className="space-y-3">
                         {service.features.map((f) => (
                             <li key={f} className="flex items-center gap-3 text-slate-300 text-sm">
-                                <FaCheckCircle className="text-violet-400 flex-shrink-0" size={14} />
+                                <FaCheckCircle className="text-brand-400 flex-shrink-0" size={14} />
                                 {f}
                             </li>
                         ))}
                     </ul>
                     <Link
                         href="/contact"
-                        className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-semibold text-sm shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105 transition-all duration-200"
+                        className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 font-semibold text-sm shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-105 transition-all duration-200"
                     >
                         Get a Quote <FaArrowRight size={12} />
                     </Link>
@@ -48,10 +48,10 @@ function ServiceSection({ service, index }) {
                 {/* Visual card */}
                 <AnimatedSection className="flex-1" delay={0.15}>
                     <div className="relative glass rounded-3xl border border-white/10 p-8 overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-violet-600/8 to-blue-600/8" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-brand-600/8 to-accent-600/8" />
                         <div className="relative z-10 flex flex-col items-center gap-5">
-                            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center shadow-xl shadow-violet-500/30">
-                                {Icon && <Icon size={36} className="text-white" />}
+                            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-400 to-accent-500 flex items-center justify-center shadow-xl shadow-brand-500/30">
+                                {Icon && <Icon size={36} className="text-ink-950" />}
                             </div>
                             <h3 className="text-white font-bold text-xl">{service.title}</h3>
                             <div className="w-full grid grid-cols-2 gap-3">
@@ -79,7 +79,7 @@ function FAQItem({ faq, index }) {
         <AnimatedSection delay={index * 0.07}>
             <button
                 onClick={() => setOpen(!open)}
-                className="w-full text-left glass rounded-2xl border border-white/10 p-6 hover:border-violet-500/30 transition-all duration-200"
+                className="w-full text-left glass rounded-2xl border border-white/10 p-6 hover:border-brand-500/30 transition-all duration-200"
             >
                 <div className="flex items-center justify-between gap-4">
                     <span className="text-white font-semibold text-sm sm:text-base">
@@ -88,7 +88,7 @@ function FAQItem({ faq, index }) {
                     <motion.span
                         animate={{ rotate: open ? 180 : 0 }}
                         transition={{ duration: 0.25 }}
-                        className="text-violet-400 flex-shrink-0"
+                        className="text-brand-400 flex-shrink-0"
                     >
                         <FaChevronDown size={14} />
                     </motion.span>
@@ -117,7 +117,7 @@ export default function ServicesPage() {
             {/* Hero */}
             <section className="py-24 px-4 sm:px-6 lg:px-8 text-center">
                 <AnimatedSection>
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-400 text-xs font-semibold uppercase tracking-widest mb-6">
+                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-widest mb-6">
                         Services
                     </span>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5">
@@ -155,13 +155,13 @@ export default function ServicesPage() {
                             <AnimatedSection key={plan.name} delay={i * 0.1}>
                                 <div
                                     className={`relative glass rounded-2xl p-8 flex flex-col h-full transition-all duration-300 ${plan.highlighted
-                                        ? "border-2 border-violet-500 glow-purple"
-                                        : "border border-white/10 hover:border-violet-500/40"
+                                        ? "border-2 border-brand-500 glow-brand"
+                                        : "border border-white/10 hover:border-brand-500/40"
                                         }`}
                                 >
                                     {plan.highlighted && (
                                         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                                            <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-violet-600 to-blue-500 text-white text-xs font-bold shadow-lg">
+                                            <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 text-xs font-bold shadow-lg">
                                                 Most Popular
                                             </span>
                                         </div>
@@ -179,7 +179,7 @@ export default function ServicesPage() {
                                     <ul className="space-y-3 flex-1 mb-8">
                                         {plan.features.map((f) => (
                                             <li key={f} className="flex items-center gap-2 text-slate-300 text-sm">
-                                                <FaCheckCircle className="text-violet-400 flex-shrink-0" size={13} />
+                                                <FaCheckCircle className="text-brand-400 flex-shrink-0" size={13} />
                                                 {f}
                                             </li>
                                         ))}
@@ -187,8 +187,8 @@ export default function ServicesPage() {
                                     <Link
                                         href="/contact"
                                         className={`flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 ${plan.highlighted
-                                            ? "bg-gradient-to-r from-violet-600 to-blue-500 text-white shadow-lg shadow-violet-500/25"
-                                            : "glass border border-white/15 text-white hover:border-violet-500/40"
+                                            ? "bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 shadow-lg shadow-brand-500/25"
+                                            : "glass border border-white/15 text-white hover:border-brand-500/40"
                                             }`}
                                     >
                                         {plan.cta} <FaArrowRight size={12} />
@@ -232,7 +232,7 @@ export default function ServicesPage() {
                     </p>
                     <Link
                         href="/contact"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-violet-600 to-blue-500 text-white font-bold shadow-2xl shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105 transition-all duration-200"
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-brand-400 to-accent-500 text-ink-950 font-bold shadow-2xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:scale-105 transition-all duration-200"
                     >
                         Schedule a Free Call <FaArrowRight size={14} />
                     </Link>

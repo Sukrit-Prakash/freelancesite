@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
 
                 {/* Header */}
                 <header className="mb-14 text-center">
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-400 text-xs font-semibold uppercase tracking-widest mb-6">
+                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-widest mb-6">
                         Legal
                     </span>
                     <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-3">
@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
                     </div>
 
                     {/* 3. Advertising & Analytics */}
-                    <div className="glass rounded-2xl border border-violet-500/20 p-8 bg-violet-500/5">
+                    <div className="glass rounded-2xl border border-brand-500/20 p-8 bg-brand-500/5">
                         <h2 className="text-xl font-bold text-white mb-3">3. Advertising &amp; Analytics</h2>
                         <p className="mb-4">
                             We use <strong className="text-white">Google AdMob</strong> to serve advertisements. To
@@ -71,7 +71,7 @@ export default function PrivacyPolicy() {
                             <li>Limit the number of times you see the same ad.</li>
                             <li>Measure the effectiveness of ad campaigns.</li>
                         </ul>
-                        <p className="mt-4 text-sm text-violet-400 font-medium">
+                        <p className="mt-4 text-sm text-brand-400 font-medium">
                             You can opt-out of personalized ads in your Android device settings (Google &gt; Ads).
                         </p>
                     </div>
@@ -89,7 +89,7 @@ export default function PrivacyPolicy() {
                                     href="https://policies.google.com/privacy"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-violet-400 hover:text-violet-300 underline underline-offset-2 transition-colors"
+                                    className="text-brand-400 hover:text-brand-300 underline underline-offset-2 transition-colors"
                                 >
                                     Google Play Services
                                 </a>
@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
                                     href="https://support.google.com/admob/answer/6128543"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-violet-400 hover:text-violet-300 underline underline-offset-2 transition-colors"
+                                    className="text-brand-400 hover:text-brand-300 underline underline-offset-2 transition-colors"
                                 >
                                     AdMob
                                 </a>
@@ -126,7 +126,7 @@ export default function PrivacyPolicy() {
                         </p>
                         <a
                             href="mailto:bloom.script.tech@gmail.com"
-                            className="font-mono text-violet-400 hover:text-violet-300 transition-colors"
+                            className="font-mono text-brand-400 hover:text-brand-300 transition-colors"
                         >
                             bloom.script.tech@gmail.com
                         </a>
