@@ -1,40 +1,66 @@
 import nodemailer from "nodemailer";
 
+// Escape user input before inserting it into email HTML
+const escapeHtml = (str) =>
+    String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+    })[c]);
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(request) {
     try {
-        const { name, email, budget, message } = await request.json();
+        const body = await request.json();
 
         // Basic validation
-        if (!name || !email || !message) {
+        if (!body.name || !body.email || !body.message) {
             return Response.json(
                 { error: "Name, email, and message are required." },
                 { status: 400 }
             );
         }
+        if (!EMAIL_RE.test(body.email)) {
+            return Response.json(
+                { error: "Please enter a valid email address." },
+                { status: 400 }
+            );
+        }
+
+        if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+            console.error("Contact form error: GMAIL_USER or GMAIL_APP_PASSWORD is not set");
+            return Response.json(
+                { error: "Failed to send message. Please try again." },
+                { status: 500 }
+            );
+        }
+
+        const name = escapeHtml(body.name);
+        const email = escapeHtml(body.email);
+        const budget = body.budget ? escapeHtml(body.budget) : "";
+        const message = escapeHtml(body.message);
 
         const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false, // STARTTLS
-            family: 4,     // Force IPv4
-            tls: {
-                rejectUnauthorized: false, // bypass self-signed cert from local proxy/antivirus
-            },
+            service: "gmail",
             auth: {
-                type: "OAuth2",
                 user: process.env.GMAIL_USER,
-                clientId: process.env.CLIENT_ID,
-                clientSecret: process.env.CLIENT_SECRET,
-                refreshToken: process.env.REFRESH_TOKEN,
+                pass: process.env.GMAIL_APP_PASSWORD,
             },
+            // Only relax cert checks locally (e.g. antivirus/proxy injecting a self-signed cert)
+            ...(process.env.NODE_ENV !== "production" && {
+                tls: { rejectUnauthorized: false },
+            }),
         });
 
         // Email to YOU (the business owner)
         await transporter.sendMail({
             from: `"BloomScript Contact Form" <${process.env.GMAIL_USER}>`,
             to: process.env.GMAIL_USER,
-            replyTo: email,
-            subject: `New Project Inquiry from ${name}`,
+            replyTo: body.email,
+            subject: `New Project Inquiry from ${body.name}`,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
                     <h2 style="color: #a78bfa; margin-top: 0;">New Contact Form Submission</h2>
@@ -62,7 +88,7 @@ export async function POST(request) {
         // Auto-reply to the sender
         await transporter.sendMail({
             from: `"BloomScript Technologies" <${process.env.GMAIL_USER}>`,
-            to: email,
+            to: body.email,
             subject: "We received your message — BloomScript Technologies",
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
